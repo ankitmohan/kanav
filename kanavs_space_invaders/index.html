@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanav's Space Invaders 👾</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>🚀 Kanav's Space Invaders 👾</h1>
+            <div class="score-board">
+                Level: <span id="levelDisplay">1</span> &nbsp;|&nbsp; Score: <span id="score">0</span>
+            </div>
+        </div>
+        
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            
+            <div id="startScreen" class="overlay">
+                <h2>Ready to save the galaxy?</h2>
+                <p>Use LEFT and RIGHT arrows to move. Press SPACE to shoot lasers!</p>
+                <button id="startBtn">START GAME</button>
+            </div>
+            
+            <div id="gameOverScreen" class="overlay hidden">
+                <h2>GAME OVER</h2>
+                <p>You scored: <span id="finalScore">0</span></p>
+                <button id="restartBtn">PLAY AGAIN</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

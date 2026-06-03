@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Racing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🏁 Ultimate Racing Game! 🏁</h1>
+    <div id="ui-bar">
+        <span id="pos-display">Position: 1st</span>
+        <span id="dist-display" style="margin-left: 15px;">Laps: 0 / 19</span>
+        <span id="speed-display" style="margin-left: 15px; color: #4CAF50;">Speed: 0 MPH</span>
+        <span id="tire-display" style="display: none; color: #ffeb3b; margin-left: 15px;">Tires: 100%</span>
+    </div>
+    
+    <div style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
+        <div id="leaderboard" style="width: 180px; background: #222; border: 3px solid #111; border-radius: 10px; padding: 10px; text-align: left; display: none;">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: #FFD700; text-align: center; border-bottom: 2px solid #555; padding-bottom: 5px;">Leaderboard</h3>
+            <div id="leaderboard-list" style="font-size: 16px; line-height: 1.5;"></div>
+        </div>
+
+        <div id="game-container" style="position: relative;">
+            <canvas id="gameCanvas" width="400" height="600"></canvas>
+            <button id="skip-btn" onclick="skipFormationLap()" style="display: none; position: absolute; bottom: 20px; right: 20px; z-index: 10; padding: 10px 20px; font-size: 16px; font-weight: bold; background: #FFD700; color: #111; border: 2px solid #FFF; border-radius: 5px; cursor: pointer;">SKIP FORMATION LAP ⏭️</button>
+        </div>
+    </div>
+
+    <div id="start-screen">
+        <h2>MAIN MENU</h2>
+        <p>You are the <strong>RED</strong> car.</p>
+        <p>Use <strong>LEFT/RIGHT</strong> to steer, <strong>UP</strong> for gas, <strong>DOWN</strong> to brake.</p>
+        <div style="margin-top: 20px;">
+            <button id="sprint-btn" onclick="startRace('sprint')" style="margin-right: 10px;">Sprint Race (19 Laps)</button>
+            <button id="gp-btn" onclick="startRace('gp')">Grand Prix (72 Laps)</button>
+        </div>
+    </div>
+    <div id="win-screen" style="display: none;">
+        <h2>🏆 RACE OVER! 🏆</h2>
+        <p id="final-result"></p>
+        <button id="restart-btn" onclick="startRace()">Race Again</button>
+    </div>
+
+    <script>
+        window.onerror = function(msg, url, line, col, error) {
+            fetch('http://localhost:8000/log?err=' + encodeURIComponent(msg + " at " + line));
+            alert("SYSTEM CRASH: " + msg + " at line " + line);
+        };
+    </script>
+    <script src="game.js?v=999"></script>
+</body>
+</html>
